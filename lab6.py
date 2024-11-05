@@ -37,12 +37,69 @@ def selection_sort(values:list[int]) -> None:
 
 
 # Part 1
+#Takes a list of data.Book type as input
+#Returns nothing
+#Function uses selection sort to sort the books by their title
+#all within the same list
+def selection_sort_books(arr: list[data.Book]) -> None:
+    #Selection Sort for arr
+    for idx in range(len(arr) - 1):
+        mindx = idx
+        for i in range(idx, len(arr)):
+            if arr[i].title < arr[mindx].title:
+                mindx = i
 
+        temp = arr[mindx]
+        arr[mindx] = arr[idx]
+        arr[idx] = temp
 
 # Part 2
+#Takes string as input
+#Returns similar string, but the case of each of the letters are flipped
+def swap_case(s: str) -> str:
 
+    x = str()
+
+    for i in s:
+        if i.isalpha():
+            if i.isupper():
+                x += i.lower()
+            else:
+                x += i.upper()
+        else:
+            x += i
+
+    return x
 
 # Part 3
+#Takes a string, and two characters as input
+#Returns similar string as input, but with each instance of first character
+#replaced with the other
+def str_translate(s: str, c1: str, c2: str) -> str:
+    x = str()
 
+    for i in s:
+        if i == c1:
+            x += c2
+        else:
+            x += i
+
+    return x
 
 # Part 4
+#Takes string as input, splits it to words storing them in list
+#returns a dictionary containing count of each of the words
+#Capitalization/Case does not matter
+def histogram(s: str) -> dict:
+    l = s.split(' ')
+    hist = dict()
+
+    for i in l:
+        i = i.lower()
+
+        if i not in hist:
+            hist[i] = 0
+
+        hist[i] += 1
+
+    return hist

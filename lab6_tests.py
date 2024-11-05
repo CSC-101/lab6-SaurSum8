@@ -64,18 +64,64 @@ class TestCases(unittest.TestCase):
 
 
     # Part 1
+    def test_selection_sort_books_1(self):
+        b0 = data.Book(['Leshy', 'Grimora', 'Magnifus', 'P03'], "Inscryption")
+        b1 = data.Book(['Leshy'], "The Scrybe Of Beasts")
+        b2 = data.Book(['Luke', 'Dealer'], "Buckshot Roulette")
 
+        inp = [b0, b1, b2]
+        exp = [b2, b0, b1]
+
+        lab6.selection_sort_books(inp)
+        self.assertEqual(exp, inp)
+
+    def test_selection_sort_books_2(self):
+        b0 = data.Book(['Stoat', 'P03'], "The Scrybe Of Technology")
+        b1 = data.Book(['Leshy'], "The Scrybe Of Beasts")
+        b2 = data.Book(['Luke', 'Dealer'], "Buckshot Roulette")
+
+        inp = [b0, b1, b2]
+        exp = [b2, b1, b0]
+
+        lab6.selection_sort_books(inp)
+        self.assertEqual(exp, inp)
 
     # Part 2
+    def test_swap_case_1(self):
+        inp = "HeLlO WORld"
+        exp = "hElLo worLD"
+        self.assertEqual(exp, lab6.swap_case(inp))
 
+    def test_swap_case_2(self):
+        inp = "EEEEEEEE&* (&*^&%^a"
+        exp = "eeeeeeee&* (&*^&%^A"
+        self.assertEqual(exp, lab6.swap_case(inp))
 
     # Part 3
+    def test_str_translate_1(self):
+        inp = "abcdcba"
+        exp = "xbcdcbx"
 
+        self.assertEqual(exp, lab6.str_translate(inp, 'a','x'))
+
+    def test_str_translate_2(self):
+        inp = "aaabbbba%aaccccCCC )"
+        exp = "aaabbbba%aappppCCC )"
+
+        self.assertEqual(exp, lab6.str_translate(inp, 'c','p'))
 
     # Part 4
+    def test_histogram_1(self):
+        inp = "Hello World world"
+        exp = {"hello": 1, "world": 2}
 
+        self.assertEqual(exp, lab6.histogram(inp))
 
+    def test_histogram_2(self):
+        inp = "ABC abc DEF abcd"
+        exp = {"abc": 2, "def": 1, "abcd":1}
 
+        self.assertEqual(exp, lab6.histogram(inp))
 
 
 if __name__ == '__main__':
